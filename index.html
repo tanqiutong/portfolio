@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人作品集 | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --bg-main: #f8f7f4;
+  --bg-card: #ffffff;
+  --bg-card-alt: #fdfcf9;
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5a72;
+  --text-muted: #9999aa;
+  --border: #e8e6e0;
+  --border-light: #f0eee8;
+  --accent-coral: #ff6b6b;
+  --accent-mint: #4ecdc4;
+  --accent-sky: #45b7d1;
+  --accent-gold: #f7b731;
+  --accent-lavender: #a29bfe;
+  --accent-pink: #fd79a8;
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.06);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+/* ===== Reveal Animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+
+/* ===== Section Title ===== */
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+.section-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+}
+.section-divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--accent-coral), var(--accent-gold));
+  margin: 0 0 16px 0;
+  border-radius: 2px;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(248,247,244,0.85);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--text-primary); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none; font-size: 0.88rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent-coral); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding-top: 80px; padding-bottom: 80px;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; width: 100%;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--accent-coral);
+  background: rgba(255,107,107,0.08);
+  border: 1px solid rgba(255,107,107,0.2);
+  padding: 6px 16px; border-radius: 20px;
+  margin-bottom: 28px;
+}
+.hero-name {
+  font-size: 4rem; font-weight: 900; letter-spacing: -0.04em;
+  line-height: 1.05; margin-bottom: 16px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #5a5a72 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-slogan {
+  font-size: 1.2rem; color: var(--text-secondary);
+  font-weight: 400; line-height: 1.6; max-width: 420px;
+}
+
+/* ===== Radar ===== */
+.radar-wrapper {
+  display: flex; justify-content: center; align-items: center;
+}
+.radar-svg { width: 100%; max-width: 460px; height: auto; }
+
+/* ===== Flywheel ===== */
+.flywheel-section { padding: 120px 0; background: linear-gradient(180deg, var(--bg-main) 0%, #f3f1ec 100%); }
+.flywheel-container { display: flex; justify-content: center; align-items: center; margin-top: 48px; }
+.flywheel-svg { width: 100%; max-width: 600px; height: auto; }
+.flywheel-node { cursor: pointer; transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s; }
+.flywheel-node:hover { transform: scale(1.15); filter: brightness(1.1) drop-shadow(0 4px 12px rgba(0,0,0,0.12)); }
+
+/* ===== Case ===== */
+.case-section { padding: 100px 0; }
+.case-section:nth-child(even) { background: var(--bg-card-alt); }
+.case-header { margin-bottom: 64px; }
+.case-phase { margin-bottom: 80px; }
+
+/* Mac Window */
+.mac-window {
+  background: var(--bg-card);
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+.mac-titlebar {
+  background: #f0eee8; padding: 12px 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+.mac-dot.red { background: #ff5f57; }
+.mac-dot.yellow { background: #febc2e; }
+.mac-dot.green { background: #28c840; }
+.mac-address {
+  flex: 1; background: #e8e6e0; border-radius: 6px;
+  padding: 5px 12px; font-size: 0.78rem; color: var(--text-muted);
+  text-align: center; margin: 0 16px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+.mac-content { padding: 0; }
+.mac-content img { width: 100%; display: block; }
+
+/* Phase Label */
+.phase-label { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.phase-dot {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: 700; color: #fff; flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.phase-dot.perceive { background: var(--accent-sky); }
+.phase-dot.create { background: var(--accent-lavender); }
+.phase-dot.build { background: var(--accent-mint); }
+.phase-dot.analyze { background: var(--accent-gold); }
+.phase-dot.systematize { background: var(--accent-coral); }
+.phase-title-text { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em; }
+.phase-subtext { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+
+/* Before/After Slider */
+.before-after-container {
+  position: relative; width: 100%; max-width: 700px; margin: 0 auto;
+  overflow: hidden; border-radius: 16px;
+  user-select: none; -webkit-user-select: none; cursor: ew-resize;
+}
+.before-after-container img { width: 100%; display: block; pointer-events: none; }
+.ba-before { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; }
+.ba-before img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.ba-after { width: 100%; }
+.ba-after img { width: 100%; height: auto; object-fit: cover; display: block; }
+.ba-line {
+  position: absolute; top: 0; bottom: 0; width: 2px;
+  background: var(--accent-coral); left: 50%; pointer-events: none;
+  box-shadow: 0 0 8px rgba(255,107,107,0.3); z-index: 2;
+}
+.ba-handle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  background: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 3;
+  font-size: 1rem; color: var(--accent-coral);
+  border: 2px solid var(--accent-coral);
+}
+.ba-label {
+  position: absolute; top: 12px;
+  padding: 4px 12px;
+  background: rgba(255,107,107,0.9); color: #fff;
+  font-size: 0.75rem; font-weight: 600; border-radius: 4px;
+  pointer-events: none; z-index: 4; letter-spacing: 0.04em;
+}
+.ba-label.left { left: 12px; }
+.ba-label.right { right: 12px; }
+
+/* iPhone Frame */
+.iphone-frame {
+  position: relative;
+  background: #2d2d38; border-radius: 40px; padding: 12px;
+  border: 3px solid #3a3a48;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+  max-width: 360px; margin: 0 auto;
+}
+.iphone-notch { width: 100px; height: 24px; background: #1a1a24; margin: 0 auto 8px; border-radius: 0 0 16px 16px; }
+.iphone-screen { border-radius: 28px; overflow: hidden; background: #000; }
+.iphone-home-bar { width: 100px; height: 5px; background: #555; border-radius: 3px; margin: 8px auto 0; }
+
+/* Dashboard UI */
+.dashboard-card {
+  background: var(--bg-card); border-radius: 16px; padding: 28px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.dash-metric {
+  text-align: center; padding: 20px 12px;
+  background: var(--bg-card-alt); border-radius: 14px;
+  border: 1px solid var(--border-light);
+}
+.dash-ring { position: relative; width: 72px; height: 72px; margin: 0 auto 10px; }
+.dash-ring svg { transform: rotate(-90deg); }
+.dash-ring .ring-value {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.95rem;
+}
+.dash-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
+
+/* Email Screenshot */
+.email-screenshot {
+  transform: rotate(2deg);
+  box-shadow: var(--shadow-lg);
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.email-screenshot:hover { transform: rotate(0deg) scale(1.03); }
+.email-screenshot img { width: 100%; display: block; }
+
+/* Movie Player */
+.movie-player {
+  background: #1c1c28; border-radius: 14px; overflow: hidden;
+  border: 1px solid #2a2a3a; box-shadow: var(--shadow-md);
+}
+.movie-header {
+  padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.78rem; color: #888;
+}
+.movie-controls { display: flex; gap: 12px; align-items: center; }
+.movie-body img { width: 100%; display: block; }
+.movie-progress {
+  height: 3px; background: #2a2a3a;
+  margin: 0 16px; border-radius: 2px;
+}
+.movie-progress-bar {
+  height: 100%; width: 42%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-coral));
+  border-radius: 2px;
+}
+.movie-footer {
+  padding: 8px 16px 14px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem; color: #777;
+}
+
+/* Scattered Posters */
+.posters-scatter {
+  position: relative; height: 420px;
+  display: flex; align-items: center; justify-content: center;
+}
+.poster-item {
+  position: absolute; width: 200px; border-radius: 8px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), z-index 0s;
+  cursor: pointer;
+}
+.poster-item img { width: 100%; display: block; border-radius: 8px; }
+.poster-0 { transform: rotate(-5deg); top: 20px; left: 10%; z-index: 1; }
+.poster-1 { transform: rotate(3deg); top: 60px; left: 35%; z-index: 3; }
+.poster-2 { transform: rotate(-2deg); top: 10px; left: 58%; z-index: 2; }
+.poster-item:hover {
+  transform: rotate(0deg) scale(1.12) !important;
+  z-index: 10 !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+}
+
+/* Breath Border */
+.breath-border {
+  position: relative;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 2px solid transparent;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.breath-border::before {
+  content: '';
+  position: absolute; inset: -3px; border-radius: 19px; padding: 3px;
+  background: linear-gradient(135deg, var(--accent-mint), var(--accent-sky), var(--accent-mint));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: breathGlow 3s ease-in-out infinite;
+  pointer-events: none; z-index: 0;
+}
+@keyframes breathGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Dual Pane */
+.dual-pane {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  position: relative; z-index: 1;
+}
+.code-editor {
+  background: #1e1e2a; border-radius: 12px; overflow: hidden;
+  border: 1px solid #2a2a3a;
+}
+.code-editor-header {
+  padding: 8px 14px; font-size: 0.72rem; color: #888;
+  border-bottom: 1px solid #2a2a3a;
+  display: flex; align-items: center; gap: 8px;
+}
+.code-editor-body {
+  padding: 16px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.8rem; line-height: 1.8; color: #c0c0d0;
+  overflow-x: auto;
+}
+.code-keyword { color: #c084fc; }
+.code-string { color: #4ecdc4; }
+.code-func { color: #60a5fa; }
+.code-comment { color: #6a6a80; }
+
+.tool-preview {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.tool-preview img { width: 100%; display: block; }
+
+/* Impact Slogan */
+.impact-slogan {
+  font-size: 1.9rem; font-weight: 900; letter-spacing: -0.03em;
+  text-align: center; margin-top: 40px;
+  background: linear-gradient(135deg, var(--accent-mint) 0%, var(--accent-sky) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ===== Layout Helpers ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.two-col-wide-left { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
+.two-col-wide-right { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+
+/* Design Rationale */
+.design-rationale {
+  margin-top: 16px; padding: 14px 18px;
+  background: rgba(162,155,254,0.08);
+  border-left: 3px solid var(--accent-lavender);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.85rem; color: var(--text-secondary);
+}
+.design-rationale strong { color: var(--accent-lavender); }
+
+/* Highlight Number */
+.highlight-num {
+  font-size: 3rem; font-weight: 900; line-height: 1;
+  background: linear-gradient(135deg, var(--accent-coral), var(--accent-gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* Metric Card */
+.metric-mini {
+  background: var(--bg-card-alt); border-radius: 12px;
+  padding: 14px; border: 1px solid var(--border-light);
+}
+.metric-mini .metric-val { font-size: 1.6rem; font-weight: 800; }
+.metric-mini .metric-label { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Footer */
+footer {
+  text-align: center; padding: 60px 0;
+  color: var(--text-muted); font-size: 0.82rem;
+  border-top: 1px solid var(--border); margin-top: 80px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .hero-grid, .two-col, .two-col-wide-left, .two-col-wide-right, .dual-pane {
+    grid-template-columns: 1fr;
+  }
+  .hero-name { font-size: 2.6rem; }
+  .container { padding: 0 20px; }
+  .nav-links { display: none; }
+  .dashboard-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .posters-scatter { height: 300px; }
+  .poster-item { width: 140px; }
+  .impact-slogan { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-brand">Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#hero">首页</a></li>
+    <li><a href="#case1">案例一</a></li>
+    <li><a href="#case2">案例二</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="hero-tag">产品增长</div>
+        <h1 class="hero-name">张知远</h1>
+        <p class="hero-slogan">产品增长负责人，擅长从洞察到落地，用数据和工具把事做成。</p>
+      </div>
+      <div class="radar-wrapper reveal reveal-delay-2">
+        <!--
+          雷达图：五维度核心能力，五轴均匀分布（360°/5=72°）
+          轴1正上=产品策划 轴2右上=数据洞察 轴3右下=增长运营
+          轴4左下=工具开发 轴5左上=视觉设计
+        -->
+        <svg class="radar-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="radarFill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="rgba(255,107,107,0.25)"/>
+              <stop offset="50%" stop-color="rgba(247,183,49,0.18)"/>
+              <stop offset="100%" stop-color="rgba(69,183,209,0.22)"/>
+            </linearGradient>
+            <filter id="glowFilter">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- 五层同心五边形网格 -->
+          <g stroke="rgba(0,0,0,0.06)" stroke-width="1.5" fill="none">
+            <polygon points="350,85  602,266  506,562  194,562  98,266"/>
+            <polygon points="350,138  552,285  475,510  225,510  148,285"/>
+            <polygon points="350,191  501,303  443,457  257,457  199,303"/>
+            <polygon points="350,244  451,322  412,405  288,405  249,322"/>
+            <polygon points="350,297  400,341  381,353  319,353  300,341"/>
+          </g>
+
+          <!-- 五条轴线 -->
+          <g stroke="rgba(0,0,0,0.05)" stroke-width="1" stroke-dasharray="6 4">
+            <line x1="350" y1="85" x2="350" y2="615"/>
+            <line x1="602" y1="266" x2="98" y2="266"/>
+            <line x1="506" y1="562" x2="194" y2="562"/>
+          </g>
+
+          <!-- 数据填充多边形 -->
+          <g filter="url(#glowFilter)">
+            <polygon
+              points="350,112  564,280  475,522  233,511  174,293"
+              fill="url(#radarFill)"
+              stroke="var(--accent-coral)" stroke-width="2.5"
+              stroke-linejoin="round" stroke-linecap="round"/>
+          </g>
+
+          <!-- 五个数据点（不同颜色） -->
+          <g filter="url(#glowFilter)">
+            <circle cx="350" cy="112" r="6" fill="#ff6b6b"/>
+            <circle cx="564" cy="280" r="6" fill="#f7b731"/>
+            <circle cx="475" cy="522" r="6" fill="#4ecdc4"/>
+            <circle cx="233" cy="511" r="6" fill="#45b7d1"/>
+            <circle cx="174" cy="293" r="6" fill="#a29bfe"/>
+          </g>
+
+          <!-- 维度标签（双行：名称 + 百分比） -->
+          <g font-family="'Noto Sans SC','Inter',sans-serif" font-size="14" font-weight="700">
+            <text x="350" y="62" text-anchor="middle" fill="#1a1a2e">
+              <tspan x="350" dy="0">策略规划</tspan>
+              <tspan x="350" dy="22" font-size="18" fill="#ff6b6b">90%</tspan>
+            </text>
+            <text x="630" y="258" text-anchor="start" fill="#1a1a2e">
+              <tspan x="630" dy="0">数据分析</tspan>
+              <tspan x="630" dy="22" font-size="18" fill="#f7b731">85%</tspan>
+            </text>
+            <text x="522" y="565" text-anchor="middle" fill="#1a1a2e">
+              <tspan x="522" dy="0">增长运营</tspan>
+              <tspan x="522" dy="22" font-size="18" fill="#4ecdc4">80%</tspan>
+            </text>
+            <text x="178" y="565" text-anchor="middle" fill="#1a1a2e">
+              <tspan x="178" dy="0">效率工具</tspan>
+              <tspan x="178" dy="22" font-size="18" fill="#45b7d1">75%</tspan>
+            </text>
+            <text x="40"  y="290" text-anchor="end" fill="#1a1a2e">
+              <tspan x="40" dy="0">交互设计</tspan>
+              <tspan x="40" dy="22" font-size="18" fill="#a29bfe">70%</tspan>
+            </text>
+          </g>
+          <circle cx="350" cy="350" r="4" fill="#ff6b6b" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLYWHEEL ===== -->
+<section class="flywheel-section" id="flywheel">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">我的工作方法</h2>
+    <p class="section-subtitle reveal reveal-delay-1">洞察 · 诊断 · 执行 · 沉淀 — 四步闭环</p>
+    <div class="flywheel-container reveal reveal-delay-2">
+      <svg class="flywheel-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="nodeGlowCyan"><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="nodeGlowPurple"><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="nodeGlowGreen"><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="nodeGlowAmber"><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- 背景圆环 -->
+        <circle cx="300" cy="300" r="245" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="2"/>
+        <circle cx="300" cy="300" r="200" fill="none" stroke="rgba(0,0,0,0.04)" stroke-width="1" stroke-dasharray="8 8"/>
+
+        <!-- 弯曲箭头 -->
+        <path d="M 460 160 Q 550 300 460 440" fill="none" stroke="#45b7d1" stroke-width="2.5" opacity="0.45" marker-end="url(#arrowCyan2)"/>
+        <path d="M 140 440 Q 50 300 140 160" fill="none" stroke="#a29bfe" stroke-width="2.5" opacity="0.45" marker-end="url(#arrowCyan2)"/>
+        <path d="M 160 460 Q 300 550 440 460" fill="none" stroke="#4ecdc4" stroke-width="2.5" opacity="0.45" marker-end="url(#arrowCyan2)"/>
+        <path d="M 440 140 Q 300 50 160 140" fill="none" stroke="#f7b731" stroke-width="2.5" opacity="0.45" marker-end="url(#arrowCyan2)"/>
+        <defs>
+          <marker id="arrowCyan2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#45b7d1"/>
+          </marker>
+        </defs>
+
+        <!-- Node 1: 洞察 (Top Right) - Sky -->
+        <g class="flywheel-node">
+          <circle cx="460" cy="160" r="44" fill="#fff" stroke="#45b7d1" stroke-width="3" filter="url(#nodeGlowCyan)"/>
+          <text x="460" y="150" text-anchor="middle" fill="#45b7d1" font-size="18" font-family="Font Awesome 6 Free" font-weight="900">&#xf06e;</text>
+          <text x="460" y="174" text-anchor="middle" fill="#1a1a2e" font-size="15" font-weight="700">洞察</text>
+          <text x="460" y="192" text-anchor="middle" fill="#999" font-size="11">发现</text>
+        </g>
+
+        <!-- Node 2: 诊断 (Bottom Right) - Gold -->
+        <g class="flywheel-node">
+          <circle cx="460" cy="440" r="44" fill="#fff" stroke="#f7b731" stroke-width="3" filter="url(#nodeGlowAmber)"/>
+          <text x="460" y="430" text-anchor="middle" fill="#f7b731" font-size="18" font-family="Font Awesome 6 Free" font-weight="900">&#xf002;</text>
+          <text x="460" y="454" text-anchor="middle" fill="#1a1a2e" font-size="15" font-weight="700">诊断</text>
+          <text x="460" y="472" text-anchor="middle" fill="#999" font-size="11">定位</text>
+        </g>
+
+        <!-- Node 3: 执行 (Bottom Left) - Lavender -->
+        <g class="flywheel-node">
+          <circle cx="140" cy="440" r="44" fill="#fff" stroke="#a29bfe" stroke-width="3" filter="url(#nodeGlowPurple)"/>
+          <text x="140" y="430" text-anchor="middle" fill="#a29bfe" font-size="18" font-family="Font Awesome 6 Free" font-weight="900">&#xf085;</text>
+          <text x="140" y="454" text-anchor="middle" fill="#1a1a2e" font-size="15" font-weight="700">执行</text>
+          <text x="140" y="472" text-anchor="middle" fill="#999" font-size="11">推动</text>
+        </g>
+
+        <!-- Node 4: 沉淀 (Top Left) - Mint -->
+        <g class="flywheel-node">
+          <circle cx="140" cy="160" r="44" fill="#fff" stroke="#4ecdc4" stroke-width="3" filter="url(#nodeGlowGreen)"/>
+          <text x="140" y="150" text-anchor="middle" fill="#4ecdc4" font-size="18" font-family="Font Awesome 6 Free" font-weight="900">&#xf02d;</text>
+          <text x="140" y="174" text-anchor="middle" fill="#1a1a2e" font-size="15" font-weight="700">沉淀</text>
+          <text x="140" y="192" text-anchor="middle" fill="#999" font-size="11">复用</text>
+        </g>
+
+        <!-- Center -->
+        <circle cx="300" cy="300" r="34" fill="#fff" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+        <text x="300" y="294" text-anchor="middle" fill="#1a1a2e" font-size="13" font-weight="700">四步</text>
+        <text x="300" y="314" text-anchor="middle" fill="#1a1a2e" font-size="13" font-weight="700">闭环</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASE 1 ===== -->
+<section class="case-section" id="case1">
+  <div class="container">
+    <div class="case-header reveal">
+      <div class="section-divider"></div>
+      <h2 class="section-title">案例一：未来美术坊小程序</h2>
+      <p class="section-subtitle">从零到一，找到方向并高质量落地</p>
+    </div>
+
+    <!-- 【洞察】 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot perceive"><i class="fa-solid fa-eye"></i></div>
+        <div>
+          <div class="phase-title-text">洞察</div>
+          <div class="phase-subtext">从用户故事和竞品分析中梳理产品需求文档</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <p style="color:var(--text-secondary);margin-bottom:24px;font-size:0.95rem;">
+            通过用户故事访谈和 <strong style="color:var(--accent-sky);">12款竞品</strong> 的深度拆解，
+            梳理出功能优先级，最终产出完整的产品需求文档 —
+            <strong style="color:var(--accent-sky);">"AI+真人双师，让每个孩子被看见"</strong>。
+          </p>
+          <div class="highlight-num" style="margin-bottom:8px;">12</div>
+          <p style="color:var(--text-muted);font-size:0.82rem;">竞品深度拆解报告</p>
+        </div>
+        <div class="mac-window">
+          <div class="mac-titlebar">
+            <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+            <div class="mac-address">localhost:8080 / 竞品分析报告.html</div>
+          </div>
+          <div class="mac-content">
+            <!-- 替换为：真实的竞品分析报告截图 -->
+            <img src="c1c046b7-307b-475e-aa89-c4513bf05bee.png" alt="竞品分析报告" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 【诊断】 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot create"><i class="fa-solid fa-pen-ruler"></i></div>
+        <div>
+          <div class="phase-title-text">诊断</div>
+          <div class="phase-subtext">锚定核心痛点，用最小可行方案快速启动验证</div>
+        </div>
+      </div>
+      <div class="two-col-wide-left">
+        <div>
+          <!-- 替换为：Figma 原型图截图 -->
+          <img src="figmayuanxing.png" alt="Figma 原型图" style="width:100%;border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm);" loading="lazy">
+        </div>
+        <div>
+          <div class="design-rationale">
+            <strong>方案推演</strong><br>
+            锚定用户最痛的点，基于现有技术能力，选择最小可行方案快速验证：<br>
+            ① 首页采用「课表卡片+今日作品」双区布局，匹配家长高频查看场景；<br>
+            ② 作品墙采用瀑布流+点赞交互动效，降低分享门槛；<br>
+            ③ 教师端独立「批改工作台」，单屏完成查看→标注→语音反馈全流程。
+          </div>
+          <!-- 替换为：with 原型截图 -->
+          <img src="with.png" alt="原型截图" style="width:100%;border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm);margin-top:20px;" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- 【执行】 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot build"><i class="fa-solid fa-code"></i></div>
+        <div>
+          <div class="phase-title-text">执行</div>
+          <div class="phase-subtext">把原型高质量还原为实际上线产品</div>
+        </div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen">
+          <div class="before-after-container" id="ba1" style="height:600px;">
+            <div class="ba-after">
+              <!-- 替换为：实际上线截图 -->
+              <img src="d7d76d93-8e38-4bad-92e0-39c9be49c9d7.png" alt="实际上线图" draggable="false">
+            </div>
+            <div class="ba-before">
+              <!-- 替换为：设计原型图 -->
+              <img src="with.png" alt="原型图" draggable="false">
+            </div>
+            <div class="ba-line"></div>
+            <div class="ba-handle"><i class="fa-solid fa-arrows-left-right"></i></div>
+            <div class="ba-label left">原型</div>
+            <div class="ba-label right">上线</div>
+          </div>
+        </div>
+        <div class="iphone-home-bar"></div>
+      </div>
+    </div>
+
+    <!-- 【沉淀】 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot systematize"><i class="fa-solid fa-gears"></i></div>
+        <div>
+          <div class="phase-title-text">沉淀</div>
+          <div class="phase-subtext">把踩过的坑变成可复用的设计规范和协作流程</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="dashboard-card" style="text-align:center;padding:48px 24px;">
+          <div class="highlight-num" style="margin-bottom:12px;font-size:2.4rem;">1 → N</div>
+          <p style="color:var(--text-secondary);font-size:0.92rem;line-height:1.8;">
+            整理出组件化设计规范和前后端协作流程文档，<br>
+            后续同类项目启动时间缩短 <strong style="color:var(--accent-coral);">60%</strong>。
+          </p>
+        </div>
+        <div class="mac-window">
+          <div class="mac-titlebar">
+            <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+            <div class="mac-address">设计规范与协作流程 / Design System</div>
+          </div>
+          <div class="mac-content">
+            <!-- 替换为：真实的设计规范 / 组件库截图 -->
+            <img src="96950d00-2432-4283-9f30-42799a000cd9.png" alt="设计规范与组件库" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASE 2 ===== -->
+<section class="case-section" id="case2">
+  <div class="container">
+    <div class="case-header reveal">
+      <div class="section-divider"></div>
+      <h2 class="section-title">案例二：成长守护社区项目</h2>
+      <p class="section-subtitle">从一到多，把经验变成可复用的工具</p>
+    </div>
+
+    <!-- 【洞察】 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot perceive"><i class="fa-solid fa-eye"></i></div>
+        <div>
+          <div class="phase-title-text" style="font-size:1.35rem;">洞察：从用户声音里挖出真问题</div>
+          <div class="phase-subtext">深度访谈12位家长，结合数据定位37个核心痛点</div>
+        </div>
+      </div>
+      <div class="two-col-wide-right">
+        <div class="dashboard-card">
+          <div class="dashboard-grid">
+            <div class="dash-metric">
+              <div class="dash-ring">
+                <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="4"/><circle cx="36" cy="36" r="30" fill="none" stroke="#4ecdc4" stroke-width="4" stroke-dasharray="156 32" stroke-linecap="round"/></svg>
+                <div class="ring-value" style="color:#4ecdc4;">83%</div>
+              </div>
+              <div class="dash-label">NPS 净推荐值</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-ring">
+                <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="4"/><circle cx="36" cy="36" r="30" fill="none" stroke="#45b7d1" stroke-width="4" stroke-dasharray="170 18" stroke-linecap="round"/></svg>
+                <div class="ring-value" style="color:#45b7d1;">91%</div>
+              </div>
+              <div class="dash-label">功能满意度</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-ring">
+                <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="4"/><circle cx="36" cy="36" r="30" fill="none" stroke="#f7b731" stroke-width="4" stroke-dasharray="142 46" stroke-linecap="round"/></svg>
+                <div class="ring-value" style="color:#f7b731;">76%</div>
+              </div>
+              <div class="dash-label">30日留存率</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;">
+            <div class="metric-mini">
+              <div class="metric-val" style="color:var(--accent-lavender);">12</div>
+              <div class="metric-label">深度访谈家长数</div>
+            </div>
+            <div class="metric-mini">
+              <div class="metric-val" style="color:var(--accent-pink);">37</div>
+              <div class="metric-label">核心痛点条目</div>
+            </div>
+          </div>
+        </div>
+        <div class="email-screenshot">
+          <!-- 替换为：真实的数据邮件截图 -->
+          <img src="email.png" alt="VOC 数据邮件截图" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- 【诊断】 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot analyze"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <div>
+          <div class="phase-title-text">诊断</div>
+          <div class="phase-subtext">还原用户完整行为路径，标记出关键流失节点</div>
+        </div>
+      </div>
+      <div class="movie-player" style="max-width:700px;margin:0 auto;">
+        <div class="movie-header">
+          <span><i class="fa-solid fa-circle" style="color:#fd79a8;font-size:8px;margin-right:6px;"></i>REC</span>
+          <div class="movie-controls">
+            <i class="fa-solid fa-backward-step"></i>
+            <i class="fa-solid fa-play" style="color:#f7b731;"></i>
+            <i class="fa-solid fa-forward-step"></i>
+          </div>
+          <span>00:42 / 01:28</span>
+        </div>
+        <div class="movie-body">
+          <!-- 替换为：真实的用户路径活力 GIF -->
+          <img src="H1.gif" alt="用户路径活力 GIF" loading="lazy">
+        </div>
+        <div class="movie-progress"><div class="movie-progress-bar"></div></div>
+        <div class="movie-footer">
+          <span><i class="fa-solid fa-expand"></i> 用户路径回放 · 2024 Q3</span>
+          <span style="color:#f7b731;"><i class="fa-solid fa-circle" style="font-size:6px;"></i> 关键流失节点标记</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 【执行】 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot create"><i class="fa-solid fa-pen-ruler"></i></div>
+        <div>
+          <div class="phase-title-text">执行</div>
+          <div class="phase-subtext">推动AI游戏管理功能上线，配合宣传海报对外传播</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="mac-window" style="margin-bottom:24px;">
+            <div class="mac-titlebar">
+              <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+              <div class="mac-address">AI游戏管理上线方案.pptx</div>
+            </div>
+            <div class="mac-content">
+              <!-- 替换为：真实的 PPT 截图 -->
+              <img src="aiyouxiguanli.png" alt="AI游戏管理 PPT" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:20px;">宣传海报 · 杂志级排版</p>
+          <div class="posters-scatter">
+            <!-- 替换为：真实的宣传海报图片 -->
+            <div class="poster-item poster-0"><img src="Group 2119903540.png" alt="宣传海报 1" loading="lazy"></div>
+            <div class="poster-item poster-1"><img src="haibao.png" alt="宣传海报 2" loading="lazy"></div>
+            <div class="poster-item poster-2"><img src="huodong3.png" alt="宣传海报 3" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 【沉淀】 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot systematize"><i class="fa-solid fa-gears"></i></div>
+        <div>
+          <div class="phase-title-text">沉淀</div>
+          <div class="phase-subtext">把增长运营流程写成SOP，建成每个人都能用的工具</div>
+        </div>
+      </div>
+      <div class="breath-border" style="padding:36px;">
+        <div class="dual-pane">
+          <div class="code-editor">
+            <div class="code-editor-header">
+              <span style="color:#ff5f57;">●</span>
+              <span style="color:#febc2e;">●</span>
+              <span style="color:#28c840;">●</span>
+              <span style="margin-left:8px;">sop_growth_engine.py</span>
+            </div>
+            <div class="code-editor-body">
+<span class="code-comment"># === 增长运营 SOP 引擎 ===</span>
+<span class="code-keyword">class</span> <span class="code-func">GrowthEngine</span>:
+    <span class="code-comment"># 自动化增长闭环核心</span>
+    <span class="code-keyword">def</span> <span class="code-func">__init__</span>(<span class="code-keyword">self</span>):
+        <span class="code-keyword">self</span>.channels = [<span class="code-string">'社群'</span>, <span class="code-string">'公众号'</span>, <span class="code-string">'Push'</span>]
+
+    <span class="code-keyword">def</span> <span class="code-func">insight</span>(<span class="code-keyword">self</span>, data):
+        <span class="code-comment"># 洞察：用户故事 &amp; 竞品分析</span>
+        <span class="code-keyword">return</span> <span class="code-func">analyze_trends</span>(data)
+
+    <span class="code-keyword">def</span> <span class="code-func">diagnose</span>(<span class="code-keyword">self</span>, signals):
+        <span class="code-comment"># 诊断：锚定核心痛点</span>
+        <span class="code-keyword">return</span> <span class="code-func">find_bottleneck</span>(signals)
+
+    <span class="code-keyword">def</span> <span class="code-func">execute</span>(<span class="code-keyword">self</span>, plan):
+        <span class="code-comment"># 执行：高质量交付落地</span>
+        <span class="code-keyword">for</span> ch <span class="code-keyword">in</span> <span class="code-keyword">self</span>.channels:
+            <span class="code-func">deploy</span>(ch, plan)
+
+    <span class="code-keyword">def</span> <span class="code-func">systematize</span>(<span class="code-keyword">self</span>):
+        <span class="code-comment"># 沉淀：输出可复用工具 &amp; 规范</span>
+        <span class="code-keyword">return</span> <span class="code-func">export_toolkit</span>()
+            </div>
+          </div>
+          <div class="tool-preview">
+            <!-- 替换为：真实的 HTML 工具库预览截图 -->
+            <img src="skill.png" alt="HTML 工具库预览" loading="lazy">
+          </div>
+        </div>
+        <div class="impact-slogan">不仅会用工具，更能创造工具。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Portfolio · Designed &amp; Built with precision.</p>
+</footer>
+
+<!-- ===== Intersection Observer ===== -->
+<script>
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>
+
+<!-- ===== Before/After Slider ===== -->
+<script>
+(function() {
+  const container = document.getElementById('ba1');
+  if (!container) return;
+  const beforeLayer = container.querySelector('.ba-before');
+  const line = container.querySelector('.ba-line');
+  const handle = container.querySelector('.ba-handle');
+  let isDragging = false;
+
+  function setPosition(clientX) {
+    const rect = container.getBoundingClientRect();
+    let x = clientX - rect.left;
+    x = Math.max(0, Math.min(x, rect.width));
+    const percent = (x / rect.width) * 100;
+    beforeLayer.style.width = percent + '%';
+    line.style.left = percent + '%';
+    handle.style.left = percent + '%';
+  }
+
+  function onStart(e) { isDragging = true; container.style.cursor = 'ew-resize'; e.preventDefault(); }
+  function onMove(e) { if (!isDragging) return; const clientX = e.touches ? e.touches[0].clientX : e.clientX; setPosition(clientX); e.preventDefault(); }
+  function onEnd() { isDragging = false; container.style.cursor = 'ew-resize'; }
+
+  container.addEventListener('mousedown', onStart);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onEnd);
+  container.addEventListener('touchstart', onStart, { passive: false });
+  window.addEventListener('touchmove', onMove, { passive: false });
+  window.addEventListener('touchend', onEnd);
+
+  beforeLayer.style.width = '50%';
+  line.style.left = '50%';
+  handle.style.left = '50%';
+})();
+</script>
+
+</body>
+</html>
