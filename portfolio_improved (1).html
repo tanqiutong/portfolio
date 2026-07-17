@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谭秋童_个人作品集 | Tanqiutong_Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --bg-main: #f8f7f4;
+  --bg-card: #ffffff;
+  --bg-card-alt: #fdfcf9;
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5a72;
+  --text-muted: #9999aa;
+  --border: #e8e6e0;
+  --border-light: #f0eee8;
+  --accent-coral: #ff6b6b;
+  --accent-mint: #4ecdc4;
+  --accent-sky: #45b7d1;
+  --accent-gold: #f7b731;
+  --accent-lavender: #a29bfe;
+  --accent-pink: #fd79a8;
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.04);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.06);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #aaa; }
+
+/* ===== Reveal Animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+/* ===== Section Title ===== */
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+.section-subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+}
+.section-divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--accent-coral), var(--accent-gold));
+  margin: 0 0 16px 0;
+  border-radius: 2px;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(248,247,244,0.85);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--text-primary); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none; font-size: 0.88rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent-coral); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding-top: 80px; padding-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,107,107,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -15%; left: -5%;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(69,183,209,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center; width: 100%;
+  position: relative; z-index: 1;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--accent-coral);
+  background: rgba(255,107,107,0.08);
+  border: 1px solid rgba(255,107,107,0.2);
+  padding: 6px 16px; border-radius: 20px;
+  margin-bottom: 20px;
+}
+.hero-name {
+  font-size: 3.6rem; font-weight: 900; letter-spacing: -0.04em;
+  line-height: 1.1; margin-bottom: 8px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #5a5a72 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-name-cn {
+  font-size: 1.1rem; font-weight: 500; color: var(--text-muted);
+  margin-bottom: 24px; letter-spacing: 0.05em;
+}
+.hero-slogan {
+  font-size: 1.15rem; color: var(--text-secondary);
+  font-weight: 400; line-height: 1.7; max-width: 480px;
+  margin-bottom: 24px;
+}
+.hero-bio {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-bottom: 24px;
+}
+.hero-bio-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;
+}
+.hero-bio-item i {
+  color: var(--accent-coral); font-size: 0.7rem;
+  margin-top: 6px; flex-shrink: 0;
+}
+.hero-stats {
+  display: flex; gap: 32px; margin-bottom: 28px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+.hero-stat-val {
+  font-size: 1.6rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-coral), var(--accent-gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-stat-label {
+  font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;
+}
+.hero-contact {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.hero-contact a {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.82rem; font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+}
+.hero-contact a:hover {
+  border-color: var(--accent-coral);
+  color: var(--accent-coral);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255,107,107,0.12);
+}
+.hero-contact a.primary-cta {
+  background: linear-gradient(135deg, var(--accent-coral), #ff8e8e);
+  color: #fff;
+  border: none;
+}
+.hero-contact a.primary-cta:hover {
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(255,107,107,0.3);
+  transform: translateY(-2px);
+}
+
+/* ===== Radar ===== */
+.radar-wrapper {
+  display: flex; justify-content: center; align-items: center;
+}
+.radar-svg { width: 100%; max-width: 400px; height: auto; }
+
+/* ===== FLYWHEEL ===== */
+.flywheel-section { padding: 100px 0; background: linear-gradient(180deg, var(--bg-main) 0%, #f3f1ec 100%); }
+.flywheel-container { display: flex; justify-content: center; align-items: center; margin-top: 48px; }
+.flywheel-svg { width: 100%; max-width: 520px; height: auto; }
+.flywheel-node { cursor: pointer; transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s; }
+.flywheel-node:hover { transform: scale(1.15); filter: brightness(1.1) drop-shadow(0 4px 12px rgba(0,0,0,0.12)); }
+
+/* ===== Case ===== */
+.case-section { padding: 80px 0; }
+.case-section:nth-child(even) { background: var(--bg-card-alt); }
+.case-header { margin-bottom: 48px; }
+.case-phase { margin-bottom: 56px; }
+
+/* Mac Window */
+.mac-window {
+  background: var(--bg-card);
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+.mac-titlebar {
+  background: #f0eee8; padding: 10px 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+.mac-dot.red { background: #ff5f57; }
+.mac-dot.yellow { background: #febc2e; }
+.mac-dot.green { background: #28c840; }
+.mac-address {
+  flex: 1; background: #e8e6e0; border-radius: 6px;
+  padding: 5px 12px; font-size: 0.78rem; color: var(--text-muted);
+  text-align: center; margin: 0 16px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+.mac-content { padding: 0; }
+.mac-content img {
+  width: 100%; display: block;
+  max-height: 360px;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Phase Label */
+.phase-label { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+.phase-dot {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; color: #fff; flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.phase-dot.perceive { background: var(--accent-sky); }
+.phase-dot.create { background: var(--accent-lavender); }
+.phase-dot.build { background: var(--accent-mint); }
+.phase-dot.analyze { background: var(--accent-gold); }
+.phase-dot.systematize { background: var(--accent-coral); }
+.phase-title-text { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; }
+.phase-subtext { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+
+/* Before/After Slider */
+.before-after-container {
+  position: relative; width: 100%; max-width: 700px; margin: 0 auto;
+  overflow: hidden; border-radius: 16px;
+  user-select: none; -webkit-user-select: none; cursor: ew-resize;
+}
+.before-after-container img { width: 100%; display: block; pointer-events: none; }
+.ba-before { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; }
+.ba-before img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.ba-after { width: 100%; }
+.ba-after img { width: 100%; height: auto; object-fit: cover; display: block; }
+.ba-line {
+  position: absolute; top: 0; bottom: 0; width: 2px;
+  background: var(--accent-coral); left: 50%; pointer-events: none;
+  box-shadow: 0 0 8px rgba(255,107,107,0.3); z-index: 2;
+}
+.ba-handle {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 44px; height: 44px;
+  background: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 3;
+  font-size: 1rem; color: var(--accent-coral);
+  border: 2px solid var(--accent-coral);
+}
+.ba-label {
+  position: absolute; top: 12px;
+  padding: 4px 12px;
+  background: rgba(255,107,107,0.9); color: #fff;
+  font-size: 0.75rem; font-weight: 600; border-radius: 4px;
+  pointer-events: none; z-index: 4; letter-spacing: 0.04em;
+}
+.ba-label.left { left: 12px; }
+.ba-label.right { right: 12px; }
+
+/* iPhone Frame */
+.iphone-frame {
+  position: relative;
+  background: #2d2d38; border-radius: 40px; padding: 10px;
+  border: 3px solid #3a3a48;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  max-width: 320px; margin: 0 auto;
+}
+.iphone-notch { width: 90px; height: 22px; background: #1a1a24; margin: 0 auto 6px; border-radius: 0 0 14px 14px; }
+.iphone-screen { border-radius: 28px; overflow: hidden; background: #000; }
+.iphone-home-bar { width: 90px; height: 4px; background: #555; border-radius: 3px; margin: 6px auto 0; }
+
+/* Dashboard UI */
+.dashboard-card {
+  background: var(--bg-card); border-radius: 16px; padding: 24px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.dash-metric {
+  text-align: center; padding: 16px 10px;
+  background: var(--bg-card-alt); border-radius: 14px;
+  border: 1px solid var(--border-light);
+}
+.dash-ring { position: relative; width: 64px; height: 64px; margin: 0 auto 8px; }
+.dash-ring svg { transform: rotate(-90deg); }
+.dash-ring .ring-value {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.88rem;
+}
+.dash-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 4px; }
+
+/* Email Screenshot */
+.email-screenshot {
+  transform: rotate(2deg);
+  box-shadow: var(--shadow-md);
+  border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.email-screenshot:hover { transform: rotate(0deg) scale(1.02); }
+.email-screenshot img { width: 100%; display: block; max-height: 320px; object-fit: cover; object-position: top; }
+
+/* Movie Player */
+.movie-player {
+  background: #1c1c28; border-radius: 14px; overflow: hidden;
+  border: 1px solid #2a2a3a; box-shadow: var(--shadow-md);
+  max-width: 600px !important;
+  margin: 0 auto;
+}
+.movie-header {
+  padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 0.78rem; color: #888;
+}
+.movie-controls { display: flex; gap: 12px; align-items: center; }
+.movie-body img { width: 100%; display: block; max-height: 340px; object-fit: cover; }
+.movie-progress {
+  height: 3px; background: #2a2a3a;
+  margin: 0 16px; border-radius: 2px;
+}
+.movie-progress-bar {
+  height: 100%; width: 42%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--accent-coral));
+  border-radius: 2px;
+}
+.movie-footer {
+  padding: 8px 16px 14px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.75rem; color: #777;
+}
+
+/* Scattered Posters */
+.posters-scatter {
+  position: relative; height: 280px;
+  display: flex; align-items: center; justify-content: center;
+}
+.poster-item {
+  position: absolute; width: 160px; border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), z-index 0s;
+  cursor: pointer;
+}
+.poster-item img { width: 100%; display: block; border-radius: 8px; }
+.poster-0 { transform: rotate(-5deg); top: 10px; left: 8%; z-index: 1; }
+.poster-1 { transform: rotate(3deg); top: 40px; left: 35%; z-index: 3; }
+.poster-2 { transform: rotate(-2deg); top: 5px; left: 60%; z-index: 2; }
+.poster-item:hover {
+  transform: rotate(0deg) scale(1.1) !important;
+  z-index: 10 !important;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.16);
+}
+
+/* Breath Border */
+.breath-border {
+  position: relative;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 2px solid transparent;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.breath-border::before {
+  content: '';
+  position: absolute; inset: -3px; border-radius: 19px; padding: 3px;
+  background: linear-gradient(135deg, var(--accent-mint), var(--accent-sky), var(--accent-mint));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: breathGlow 3s ease-in-out infinite;
+  pointer-events: none; z-index: 0;
+}
+@keyframes breathGlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Dual Pane */
+.dual-pane {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  position: relative; z-index: 1;
+}
+.code-editor {
+  background: #1e1e2a; border-radius: 12px; overflow: hidden;
+  border: 1px solid #2a2a3a;
+}
+.code-editor-header {
+  padding: 8px 14px; font-size: 0.72rem; color: #888;
+  border-bottom: 1px solid #2a2a3a;
+  display: flex; align-items: center; gap: 8px;
+}
+.code-editor-body {
+  padding: 14px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.75rem; line-height: 1.8; color: #c0c0d0;
+  overflow-x: auto;
+}
+.code-keyword { color: #c084fc; }
+.code-string { color: #4ecdc4; }
+.code-func { color: #60a5fa; }
+.code-comment { color: #6a6a80; }
+
+.tool-preview {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.tool-preview img { width: 100%; display: block; max-height: 280px; object-fit: cover; object-position: top; }
+
+/* Impact Slogan */
+.impact-slogan {
+  font-size: 1.6rem; font-weight: 900; letter-spacing: -0.03em;
+  text-align: center; margin-top: 28px;
+  background: linear-gradient(135deg, var(--accent-mint) 0%, var(--accent-sky) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ===== Layout Helpers ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+.two-col-wide-left { display: grid; grid-template-columns: 1.2fr 1fr; gap: 36px; align-items: start; }
+.two-col-wide-right { display: grid; grid-template-columns: 1fr 1.2fr; gap: 36px; align-items: start; }
+
+.constrained-img {
+  width: 100%; display: block; border-radius: 14px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  max-height: 280px; object-fit: cover; object-position: top;
+}
+
+/* Design Rationale */
+.design-rationale {
+  margin-top: 12px; padding: 14px 18px;
+  background: rgba(162,155,254,0.08);
+  border-left: 3px solid var(--accent-lavender);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.85rem; color: var(--text-secondary);
+}
+.design-rationale strong { color: var(--accent-lavender); }
+
+/* Highlight Number */
+.highlight-num {
+  font-size: 2.6rem; font-weight: 900; line-height: 1;
+  background: linear-gradient(135deg, var(--accent-coral), var(--accent-gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* Metric Card */
+.metric-mini {
+  background: var(--bg-card-alt); border-radius: 12px;
+  padding: 12px; border: 1px solid var(--border-light);
+}
+.metric-mini .metric-val { font-size: 1.4rem; font-weight: 800; }
+.metric-mini .metric-label { font-size: 0.72rem; color: var(--text-muted); }
+
+/* ===== ABOUT Section ===== */
+.about-section {
+  padding: 80px 0;
+  background: var(--bg-card);
+  position: relative;
+}
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
+}
+.about-text p {
+  color: var(--text-secondary); font-size: 0.95rem;
+  margin-bottom: 16px; line-height: 1.8;
+}
+.about-text p strong { color: var(--text-primary); }
+.skill-tags {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 16px;
+}
+.skill-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 0.8rem; font-weight: 500;
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+.skill-tag:hover {
+  border-color: var(--accent-coral);
+  color: var(--accent-coral);
+  transform: translateY(-1px);
+}
+.skill-tag i { font-size: 0.7rem; }
+
+/* ===== Footer ===== */
+footer {
+  text-align: center; padding: 48px 0;
+  color: var(--text-muted); font-size: 0.82rem;
+  border-top: 1px solid var(--border); margin-top: 60px;
+}
+.footer-links {
+  display: flex; justify-content: center; gap: 24px;
+  margin-bottom: 16px;
+}
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none; font-size: 0.82rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--accent-coral); }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .hero-grid, .two-col, .two-col-wide-left, .two-col-wide-right, .dual-pane, .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-name { font-size: 2.6rem; }
+  .container { padding: 0 20px; }
+  .nav-links { display: none; }
+  .dashboard-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .posters-scatter { height: 220px; }
+  .poster-item { width: 120px; }
+  .impact-slogan { font-size: 1.2rem; }
+  .iphone-frame { max-width: 260px; padding: 8px; border-radius: 28px; }
+  .iphone-screen { border-radius: 20px; }
+  .iphone-notch { width: 70px; height: 18px; margin-bottom: 5px; }
+  .radar-svg { max-width: 320px; }
+  .flywheel-svg { max-width: 360px; }
+  .section-title { font-size: 1.6rem; }
+  .phase-title-text { font-size: 1.1rem; }
+  .highlight-num { font-size: 2.2rem; }
+  .hero { min-height: auto; padding-top: 100px; padding-bottom: 50px; }
+  .case-section { padding: 50px 0; }
+  .case-header { margin-bottom: 32px; }
+  .case-phase { margin-bottom: 36px; }
+  .flywheel-section { padding: 50px 0; }
+  .mac-window { border-radius: 10px; }
+  .mac-titlebar { padding: 8px 12px; }
+  .mac-dot { width: 8px; height: 8px; }
+  .mac-address { font-size: 0.7rem; padding: 3px 8px; margin: 0 8px; }
+  .phase-dot { width: 34px; height: 34px; font-size: 0.85rem; }
+  .phase-label { gap: 10px; margin-bottom: 16px; }
+  .about-section { padding: 50px 0; }
+  footer { padding: 32px 0; margin-top: 40px; }
+  .hero-stats { gap: 24px; }
+  .hero-contact { gap: 8px; }
+  .mac-content img { max-height: 260px; }
+  .email-screenshot img { max-height: 240px; }
+  .movie-body img { max-height: 260px; }
+  .tool-preview img { max-height: 220px; }
+}
+
+@media (max-width: 600px) {
+  .hero-name { font-size: 2rem; }
+  .container { padding: 0 14px; }
+  .dashboard-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .dash-metric { padding: 12px 6px; }
+  .dash-ring { width: 48px; height: 48px; }
+  .posters-scatter { height: 180px; }
+  .poster-item { width: 100px; }
+  .iphone-frame { max-width: 220px; padding: 6px; border-radius: 22px; }
+  .radar-svg { max-width: 280px; }
+  .flywheel-svg { max-width: 280px; }
+  .section-title { font-size: 1.35rem; }
+  .section-subtitle { font-size: 0.82rem; margin-bottom: 28px; }
+  .section-divider { width: 36px; height: 2px; }
+  .impact-slogan { font-size: 1rem; }
+  .highlight-num { font-size: 1.8rem; }
+  .phase-title-text { font-size: 1rem; }
+  .design-rationale { font-size: 0.78rem; padding: 10px 14px; }
+  .code-editor-body { font-size: 0.68rem; padding: 10px; }
+  .breath-border { padding: 20px; }
+  .two-col, .two-col-wide-left, .two-col-wide-right { gap: 24px; }
+  .hero-grid { gap: 32px; }
+  .email-screenshot { transform: rotate(1deg); }
+  .metric-mini { padding: 10px; }
+  .metric-mini .metric-val { font-size: 1.2rem; }
+  .ba-handle { width: 32px; height: 32px; }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
+  .hero-stat-val { font-size: 1.3rem; }
+  .hero-contact a { padding: 6px 12px; font-size: 0.78rem; }
+  .mac-content img { max-height: 200px; }
+  .email-screenshot img { max-height: 180px; }
+  .movie-body img { max-height: 200px; }
+  .tool-preview img { max-height: 180px; }
+  .constrained-img { max-height: 200px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-brand">Tanqiutong</div>
+  <ul class="nav-links">
+    <li><a href="#hero">首页</a></li>
+    <li><a href="#about">关于我</a></li>
+    <li><a href="#flywheel">方法论</a></li>
+    <li><a href="#case1">案例一</a></li>
+    <li><a href="#case2">案例二</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="hero-tag">产品增长 · 全栈</div>
+        <h1 class="hero-name">Tan Qiutong</h1>
+        <p class="hero-name-cn">谭秋童</p>
+        <p class="hero-slogan">
+          从用户洞察到产品落地，从数据驱动到增长闭环。<br>
+          我擅长把模糊的需求变成清晰的产品方案，用数据验证假设，用工具提升效率，把每一件事做成可沉淀、可复用的方法论。
+        </p>
+
+        <div class="hero-bio">
+          <div class="hero-bio-item">
+            <i class="fa-solid fa-diamond"></i>
+            <span>具备<strong style="color:var(--text-primary);">产品策划 + 数据分析 + 增长运营</strong>的复合能力，能独立完成从 0 到 1 的全流程</span>
+          </div>
+          <div class="hero-bio-item">
+            <i class="fa-solid fa-diamond"></i>
+            <span>熟悉 <strong style="color:var(--text-primary);">Figma / SQL / Python / HTML&amp;CSS</strong> 等工具，兼具设计思维与工程落地能力</span>
+          </div>
+          <div class="hero-bio-item">
+            <i class="fa-solid fa-diamond"></i>
+            <span>善于将<strong style="color:var(--text-primary);">复杂问题拆解为可执行步骤</strong>，用 SOP 和自动化工具提高团队协作效率</span>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-val">1+</div>
+            <div class="hero-stat-label">年产品经验</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">3+</div>
+            <div class="hero-stat-label">主导项目</div>
+          </div>
+        </div>
+
+        <div class="hero-contact">
+          <a href="mailto:tanqiutong@email.com" class="primary-cta">
+            <i class="fa-solid fa-envelope"></i> 联系我
+          </a>
+          <a href="#case1">
+            <i class="fa-solid fa-briefcase"></i> 查看案例
+          </a>
+          <a href="https://github.com/tanqiutong" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="radar-wrapper reveal reveal-delay-2">
+        <svg class="radar-svg" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="radarFill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="rgba(255,107,107,0.25)"/>
+              <stop offset="50%" stop-color="rgba(247,183,49,0.18)"/>
+              <stop offset="100%" stop-color="rgba(69,183,209,0.22)"/>
+            </linearGradient>
+            <filter id="glowFilter">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g stroke="rgba(0,0,0,0.06)" stroke-width="1.5" fill="none">
+            <polygon points="350,85  602,266  506,562  194,562  98,266"/>
+            <polygon points="350,138  552,285  475,510  225,510  148,285"/>
+            <polygon points="350,191  501,303  443,457  257,457  199,303"/>
+            <polygon points="350,244  451,322  412,405  288,405  249,322"/>
+            <polygon points="350,297  400,341  381,353  319,353  300,341"/>
+          </g>
+          <g stroke="rgba(0,0,0,0.05)" stroke-width="1" stroke-dasharray="6 4">
+            <line x1="350" y1="85" x2="350" y2="615"/>
+            <line x1="602" y1="266" x2="98" y2="266"/>
+            <line x1="506" y1="562" x2="194" y2="562"/>
+          </g>
+          <g filter="url(#glowFilter)">
+            <polygon
+              points="350,112  564,280  475,522  233,511  174,293"
+              fill="url(#radarFill)"
+              stroke="var(--accent-coral)" stroke-width="2.5"
+              stroke-linejoin="round" stroke-linecap="round"/>
+          </g>
+          <g filter="url(#glowFilter)">
+            <circle cx="350" cy="112" r="6" fill="#ff6b6b"/>
+            <circle cx="564" cy="280" r="6" fill="#f7b731"/>
+            <circle cx="475" cy="522" r="6" fill="#4ecdc4"/>
+            <circle cx="233" cy="511" r="6" fill="#45b7d1"/>
+            <circle cx="174" cy="293" r="6" fill="#a29bfe"/>
+          </g>
+          <g font-family="'Noto Sans SC','Inter',sans-serif" font-size="14" font-weight="700">
+            <text x="350" y="62" text-anchor="middle" fill="#1a1a2e">
+              <tspan x="350" dy="0">策略规划</tspan>
+              <tspan x="350" dy="22" font-size="18" fill="#ff6b6b">90%</tspan>
+            </text>
+            <text x="630" y="258" text-anchor="start" fill="#1a1a2e">
+              <tspan x="630" dy="0">数据分析</tspan>
+              <tspan x="630" dy="22" font-size="18" fill="#f7b731">85%</tspan>
+            </text>
+            <text x="522" y="565" text-anchor="middle" fill="#1a1a2e">
+              <tspan x="522" dy="0">增长运营</tspan>
+              <tspan x="522" dy="22" font-size="18" fill="#4ecdc4">80%</tspan>
+            </text>
+            <text x="178" y="565" text-anchor="middle" fill="#1a1a2e">
+              <tspan x="178" dy="0">效率工具</tspan>
+              <tspan x="178" dy="22" font-size="18" fill="#45b7d1">75%</tspan>
+            </text>
+            <text x="40"  y="290" text-anchor="end" fill="#1a1a2e">
+              <tspan x="40" dy="0">交互设计</tspan>
+              <tspan x="40" dy="22" font-size="18" fill="#a29bfe">70%</tspan>
+            </text>
+          </g>
+          <circle cx="350" cy="350" r="4" fill="#ff6b6b" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">关于我</h2>
+    <p class="section-subtitle reveal reveal-delay-1">一个"灵感+方法论"的产品人</p>
+
+    <div class="about-grid reveal reveal-delay-2">
+      <div class="about-text">
+        <p>
+          我是谭秋童，一名<strong>产品增长负责人</strong>。在过去几年里，我主导了多个从 0 到 1 的产品项目，覆盖教育科技、社区运营和 AI 应用等方向。我相信好的产品不是灵感迸发的结果，而是<strong>洞察、诊断、执行、沉淀</strong>四步闭环不断迭代出来的。
+        </p>
+        <p>
+          我的核心工作方式是：<strong>先用数据讲清楚"为什么做"，再用设计回答"做成什么样"，最后用代码和 SOP 保证"能持续做好"</strong>。这种端到端的能力让我在跨职能团队中能扮演"连接器"的角色，把设计师、工程师和运营伙伴拧成一股绳。
+        </p>
+        <p>
+          工作之余，我喜欢把重复性的流程写成自动化脚本，把散落的经验整理成可复用的模板和工具——因为<strong>最高效的成长，是把每一次踩过的坑都变成下一个路标</strong>。
+        </p>
+      </div>
+      <div>
+        <div class="skill-tags">
+          <span class="skill-tag"><i class="fa-solid fa-lightbulb" style="color:var(--accent-gold);"></i> 产品策划</span>
+          <span class="skill-tag"><i class="fa-solid fa-chart-line" style="color:var(--accent-sky);"></i> 数据分析</span>
+          <span class="skill-tag"><i class="fa-solid fa-rocket" style="color:var(--accent-mint);"></i> 增长运营</span>
+          <span class="skill-tag"><i class="fa-solid fa-pen-ruler" style="color:var(--accent-lavender);"></i> 前端/UI设计</span>
+          <span class="skill-tag"><i class="fa-solid fa-code" style="color:var(--accent-coral);"></i> AI 工作流</span>
+          <span class="skill-tag"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--accent-pink);"></i> AI 应用</span>
+          <span class="skill-tag"><i class="fa-brands fa-figma"></i> Figma</span>
+          <span class="skill-tag"><i class="fa-solid fa-database"></i> Hermes agent</span>
+          <span class="skill-tag"><i class="fa-brands fa-python"></i> cursor</span>
+          <span class="skill-tag"><i class="fa-brands fa-html5"></i> HTML/CSS</span>
+          <span class="skill-tag"><i class="fa-solid fa-file-lines"></i> PRD 撰写</span>
+          <span class="skill-tag"><i class="fa-solid fa-users"></i> 用户研究</span>
+          <span class="skill-tag"><i class="fa-solid fa-layer-group"></i> 项目管理</span>
+          <span class="skill-tag"><i class="fa-solid fa-gears"></i> SOP 搭建</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLYWHEEL ===== -->
+<section class="flywheel-section" id="flywheel">
+  <div class="container">
+    <div class="section-divider"></div>
+    <h2 class="section-title reveal">我的工作方法</h2>
+    <p class="section-subtitle reveal reveal-delay-1">洞察 · 诊断 · 执行 · 沉淀 — 四步闭环</p>
+    <div class="flywheel-container reveal reveal-delay-2">
+      <svg class="flywheel-svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="nodeGlowCyan"><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="nodeGlowPurple"><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="nodeGlowGreen"><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="nodeGlowAmber"><feGaussianBlur stdDeviation="5"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <circle cx="300" cy="300" r="245" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="2"/>
+        <circle cx="300" cy="300" r="200" fill="none" stroke="rgba(0,0,0,0.04)" stroke-width="1" stroke-dasharray="8 8"/>
+        <path d="M 460 160 Q 550 300 460 440" fill="none" stroke="#45b7d1" stroke-width="2.5" opacity="0.45" marker-end="url(#arrowCyan2)"/>
+        <path d="M 140 440 Q 50 300 140 160" fill="none" stroke="#a29bfe" stroke-width="2.5" opacity="0.45" marker-end="url(#arrowCyan2)"/>
+        <path d="M 160 460 Q 300 550 440 460" fill="none" stroke="#4ecdc4" stroke-width="2.5" opacity="0.45" marker-end="url(#arrowCyan2)"/>
+        <path d="M 440 140 Q 300 50 160 140" fill="none" stroke="#f7b731" stroke-width="2.5" opacity="0.45" marker-end="url(#arrowCyan2)"/>
+        <defs>
+          <marker id="arrowCyan2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#45b7d1"/>
+          </marker>
+        </defs>
+        <g class="flywheel-node">
+          <circle cx="460" cy="160" r="44" fill="#fff" stroke="#45b7d1" stroke-width="3" filter="url(#nodeGlowCyan)"/>
+          <text x="460" y="150" text-anchor="middle" fill="#45b7d1" font-size="18" font-family="Font Awesome 6 Free" font-weight="900">&#xf06e;</text>
+          <text x="460" y="174" text-anchor="middle" fill="#1a1a2e" font-size="15" font-weight="700">洞察</text>
+          <text x="460" y="192" text-anchor="middle" fill="#999" font-size="11">发现</text>
+        </g>
+        <g class="flywheel-node">
+          <circle cx="460" cy="440" r="44" fill="#fff" stroke="#f7b731" stroke-width="3" filter="url(#nodeGlowAmber)"/>
+          <text x="460" y="430" text-anchor="middle" fill="#f7b731" font-size="18" font-family="Font Awesome 6 Free" font-weight="900">&#xf002;</text>
+          <text x="460" y="454" text-anchor="middle" fill="#1a1a2e" font-size="15" font-weight="700">诊断</text>
+          <text x="460" y="472" text-anchor="middle" fill="#999" font-size="11">定位</text>
+        </g>
+        <g class="flywheel-node">
+          <circle cx="140" cy="440" r="44" fill="#fff" stroke="#a29bfe" stroke-width="3" filter="url(#nodeGlowPurple)"/>
+          <text x="140" y="430" text-anchor="middle" fill="#a29bfe" font-size="18" font-family="Font Awesome 6 Free" font-weight="900">&#xf085;</text>
+          <text x="140" y="454" text-anchor="middle" fill="#1a1a2e" font-size="15" font-weight="700">执行</text>
+          <text x="140" y="472" text-anchor="middle" fill="#999" font-size="11">推动</text>
+        </g>
+        <g class="flywheel-node">
+          <circle cx="140" cy="160" r="44" fill="#fff" stroke="#4ecdc4" stroke-width="3" filter="url(#nodeGlowGreen)"/>
+          <text x="140" y="150" text-anchor="middle" fill="#4ecdc4" font-size="18" font-family="Font Awesome 6 Free" font-weight="900">&#xf02d;</text>
+          <text x="140" y="174" text-anchor="middle" fill="#1a1a2e" font-size="15" font-weight="700">沉淀</text>
+          <text x="140" y="192" text-anchor="middle" fill="#999" font-size="11">复用</text>
+        </g>
+        <circle cx="300" cy="300" r="34" fill="#fff" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+        <text x="300" y="294" text-anchor="middle" fill="#1a1a2e" font-size="13" font-weight="700">四步</text>
+        <text x="300" y="314" text-anchor="middle" fill="#1a1a2e" font-size="13" font-weight="700">闭环</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASE 1 ===== -->
+<section class="case-section" id="case1">
+  <div class="container">
+    <div class="case-header reveal">
+      <div class="section-divider"></div>
+      <h2 class="section-title">案例一：未来美术坊小程序</h2>
+      <p class="section-subtitle">从零到一，找到方向并高质量落地</p>
+    </div>
+
+    <!-- 洞察 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot perceive"><i class="fa-solid fa-eye"></i></div>
+        <div>
+          <div class="phase-title-text">洞察</div>
+          <div class="phase-subtext">从用户故事和竞品分析中梳理产品需求文档</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <p style="color:var(--text-secondary);margin-bottom:20px;font-size:0.92rem;">
+            通过用户故事访谈和 <strong style="color:var(--accent-sky);">多款竞品</strong> 的深度拆解，
+            梳理出功能优先级，最终产出完整的产品需求文档 —
+            <strong style="color:var(--accent-sky);">"AI+真人双师，让每个孩子被看见"</strong>。
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div>
+              <div class="highlight-num" style="margin-bottom:4px;font-size:2rem;">10+</div>
+              <p style="color:var(--text-muted);font-size:0.8rem;">竞品深度拆解报告</p>
+            </div>
+            <div>
+              <div class="highlight-num" style="margin-bottom:4px;font-size:2rem;">7</div>
+              <p style="color:var(--text-muted);font-size:0.8rem;">核心用户故事场景</p>
+            </div>
+          </div>
+        </div>
+        <div class="mac-window">
+          <div class="mac-titlebar">
+            <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+            <div class="mac-address">localhost:8080 / 竞品分析报告.html</div>
+          </div>
+          <div class="mac-content">
+            <img src="2c5657e8-3bde-4621-b649-d5fe4d1a5178.png" alt="竞品分析报告" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 诊断 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot create"><i class="fa-solid fa-pen-ruler"></i></div>
+        <div>
+          <div class="phase-title-text">诊断</div>
+          <div class="phase-subtext">锚定核心痛点，用最小可行方案快速启动验证</div>
+        </div>
+      </div>
+      <div class="two-col-wide-left">
+        <div>
+          <img src="ec2c6809-1058-451c-bae4-fb72b8332263.png" alt="Figma 原型图" class="constrained-img" loading="lazy">
+        </div>
+        <div>
+          <div class="design-rationale">
+            <strong>方案推演</strong><br>
+            锚定用户最痛的点，基于现有技术能力，选择最小可行方案快速验证：<br>
+            ① 首页采用「课表卡片+今日作品」双区布局，匹配家长高频查看场景；<br>
+            ② 作品墙采用瀑布流+点赞交互动效，降低分享门槛；<br>
+            ③ 教师端独立「批改工作台」，单屏完成查看→标注→语音反馈全流程。
+          </div>
+          <img src="0acfaede-02a0-4c2c-90ab-ba2da400380d.png" alt="原型截图" class="constrained-img" style="margin-top:16px;" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- 执行 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot build"><i class="fa-solid fa-code"></i></div>
+        <div>
+          <div class="phase-title-text">执行</div>
+          <div class="phase-subtext">把原型高质量还原为实际上线产品</div>
+        </div>
+      </div>
+      <div class="iphone-frame">
+        <div class="iphone-notch"></div>
+        <div class="iphone-screen">
+          <div class="before-after-container" id="ba1" style="height:440px;">
+            <div class="ba-after">
+              <img src="d7d76d93-8e38-4bad-92e0-39c9be49c9d7.png" alt="实际上线图" draggable="false">
+            </div>
+            <div class="ba-before">
+              <img src="with.png" alt="原型图" draggable="false">
+            </div>
+            <div class="ba-line"></div>
+            <div class="ba-handle"><i class="fa-solid fa-arrows-left-right"></i></div>
+            <div class="ba-label left">原型</div>
+            <div class="ba-label right">上线</div>
+          </div>
+        </div>
+        <div class="iphone-home-bar"></div>
+      </div>
+    </div>
+
+    <!-- 沉淀 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot systematize"><i class="fa-solid fa-gears"></i></div>
+        <div>
+          <div class="phase-title-text">沉淀</div>
+          <div class="phase-subtext">把踩过的坑变成可复用的设计规范和协作流程</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="dashboard-card" style="text-align:center;padding:36px 24px;">
+          <div class="highlight-num" style="margin-bottom:10px;font-size:2.2rem;">1 → N</div>
+          <p style="color:var(--text-secondary);font-size:0.88rem;line-height:1.8;">
+            整理出组件化设计规范和前后端协作流程文档，<br>
+            后续同类项目启动时间缩短 <strong style="color:var(--accent-coral);">60%</strong>。
+          </p>
+        </div>
+        <div class="mac-window">
+          <div class="mac-titlebar">
+            <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+            <div class="mac-address">设计规范与协作流程 / Design System</div>
+          </div>
+          <div class="mac-content">
+            <img src="26daf889-eeed-48a1-92aa-3df44f241599.png" alt="设计规范与组件库" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CASE 2 ===== -->
+<section class="case-section" id="case2">
+  <div class="container">
+    <div class="case-header reveal">
+      <div class="section-divider"></div>
+      <h2 class="section-title">案例二：成长守护社区项目</h2>
+      <p class="section-subtitle">从一到多，把经验变成可复用的工具</p>
+    </div>
+
+    <!-- 洞察 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot perceive"><i class="fa-solid fa-eye"></i></div>
+        <div>
+          <div class="phase-title-text" style="font-size:1.25rem;">洞察：从用户声音里挖出真问题</div>
+          <div class="phase-subtext">深度访谈10位家长，结合数据定位37个核心痛点</div>
+        </div>
+      </div>
+      <div class="two-col-wide-right">
+        <div class="dashboard-card">
+          <div class="dashboard-grid">
+            <div class="dash-metric">
+              <div class="dash-ring">
+                <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="4"/><circle cx="36" cy="36" r="30" fill="none" stroke="#4ecdc4" stroke-width="4" stroke-dasharray="156 32" stroke-linecap="round"/></svg>
+                <div class="ring-value" style="color:#4ecdc4;">83%</div>
+              </div>
+              <div class="dash-label">NPS 净推荐值</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-ring">
+                <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="4"/><circle cx="36" cy="36" r="30" fill="none" stroke="#45b7d1" stroke-width="4" stroke-dasharray="170 18" stroke-linecap="round"/></svg>
+                <div class="ring-value" style="color:#45b7d1;">91%</div>
+              </div>
+              <div class="dash-label">功能满意度</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-ring">
+                <svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="30" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="4"/><circle cx="36" cy="36" r="30" fill="none" stroke="#f7b731" stroke-width="4" stroke-dasharray="142 46" stroke-linecap="round"/></svg>
+                <div class="ring-value" style="color:#f7b731;">76%</div>
+              </div>
+              <div class="dash-label">30日留存率</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+            <div class="metric-mini">
+              <div class="metric-val" style="color:var(--accent-lavender);">600+</div>
+              <div class="metric-label">调研用户数</div>
+            </div>
+            <div class="metric-mini">
+              <div class="metric-val" style="color:var(--accent-pink);">10+</div>
+              <div class="metric-label">核心痛点</div>
+            </div>
+          </div>
+        </div>
+        <div class="email-screenshot">
+          <img src="email1.png" alt="VOC 数据邮件截图" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- 诊断 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot analyze"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <div>
+          <div class="phase-title-text">诊断</div>
+          <div class="phase-subtext">还原用户完整行为路径，标记出关键流失节点</div>
+        </div>
+      </div>
+      <div class="movie-player">
+        <div class="movie-header">
+          <span><i class="fa-solid fa-circle" style="color:#fd79a8;font-size:8px;margin-right:6px;"></i>REC</span>
+          <div class="movie-controls">
+            <i class="fa-solid fa-backward-step"></i>
+            <i class="fa-solid fa-play" style="color:#f7b731;"></i>
+            <i class="fa-solid fa-forward-step"></i>
+          </div>
+          <span>00:42 / 01:28</span>
+        </div>
+        <div class="movie-body">
+          <img src="aiyouxiguanli.png" alt="AI游戏管理 PPT" loading="lazy">
+        </div>
+        <div class="movie-progress"><div class="movie-progress-bar"></div></div>
+        <div class="movie-footer">
+          <span><i class="fa-solid fa-expand"></i> 用户路径回放 · 2024 Q3</span>
+          <span style="color:#f7b731;"><i class="fa-solid fa-circle" style="font-size:6px;"></i> 关键流失节点标记</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 执行 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot create"><i class="fa-solid fa-pen-ruler"></i></div>
+        <div>
+          <div class="phase-title-text">执行</div>
+          <div class="phase-subtext">推动AI游戏管理功能上线，配合宣传海报对外传播</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="mac-window" style="margin-bottom:20px;">
+            <div class="mac-titlebar">
+              <div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div>
+              <div class="mac-address">AI游戏管理上线方案.pptx</div>
+            </div>
+            <div class="mac-content">
+              <img src="H1.gif" alt="用户路径活力 GIF" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div>
+          <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:16px;">宣传海报 · 杂志级排版</p>
+          <div class="posters-scatter">
+            <div class="poster-item poster-0"><img src="Group 2119903540.png" alt="宣传海报 1" loading="lazy"></div>
+            <div class="poster-item poster-1"><img src="haibao.png" alt="宣传海报 2" loading="lazy"></div>
+            <div class="poster-item poster-2"><img src="huodong3.png" alt="宣传海报 3" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 沉淀 -->
+    <div class="case-phase reveal">
+      <div class="phase-label">
+        <div class="phase-dot systematize"><i class="fa-solid fa-gears"></i></div>
+        <div>
+          <div class="phase-title-text">沉淀</div>
+          <div class="phase-subtext">把增长运营流程写成SOP，建成每个人都能用的工具</div>
+        </div>
+      </div>
+      <div class="breath-border" style="padding:28px;">
+        <div class="dual-pane">
+          <div class="code-editor">
+            <div class="code-editor-header">
+              <span style="color:#ff5f57;">●</span>
+              <span style="color:#febc2e;">●</span>
+              <span style="color:#28c840;">●</span>
+              <span style="margin-left:8px;">sop_growth_engine.py</span>
+            </div>
+            <div class="code-editor-body">
+<span class="code-comment"># === 增长运营 SOP 引擎 ===</span>
+<span class="code-keyword">class</span> <span class="code-func">GrowthEngine</span>:
+    <span class="code-comment"># 自动化增长闭环核心</span>
+    <span class="code-keyword">def</span> <span class="code-func">__init__</span>(<span class="code-keyword">self</span>):
+        <span class="code-keyword">self</span>.channels = [<span class="code-string">'社群'</span>, <span class="code-string">'公众号'</span>, <span class="code-string">'Push'</span>]
+
+    <span class="code-keyword">def</span> <span class="code-func">insight</span>(<span class="code-keyword">self</span>, data):
+        <span class="code-comment"># 洞察：用户故事 &amp; 竞品分析</span>
+        <span class="code-keyword">return</span> <span class="code-func">analyze_trends</span>(data)
+
+    <span class="code-keyword">def</span> <span class="code-func">diagnose</span>(<span class="code-keyword">self</span>, signals):
+        <span class="code-comment"># 诊断：锚定核心痛点</span>
+        <span class="code-keyword">return</span> <span class="code-func">find_bottleneck</span>(signals)
+
+    <span class="code-keyword">def</span> <span class="code-func">execute</span>(<span class="code-keyword">self</span>, plan):
+        <span class="code-comment"># 执行：高质量交付落地</span>
+        <span class="code-keyword">for</span> ch <span class="code-keyword">in</span> <span class="code-keyword">self</span>.channels:
+            <span class="code-func">deploy</span>(ch, plan)
+
+    <span class="code-keyword">def</span> <span class="code-func">systematize</span>(<span class="code-keyword">self</span>):
+        <span class="code-comment"># 沉淀：输出可复用工具 &amp; 规范</span>
+        <span class="code-keyword">return</span> <span class="code-func">export_toolkit</span>()
+            </div>
+          </div>
+          <div class="tool-preview">
+            <img src="skill1.png" alt="HTML 工具库预览" loading="lazy">
+          </div>
+        </div>
+        <div class="impact-slogan">不仅会用工具，更能创造工具。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="mailto:tanqiutong@email.com"><i class="fa-solid fa-envelope"></i> Email</a>
+    <a href="https://github.com/tanqiutong" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+    <a href="#"><i class="fa-solid fa-file-lines"></i> Resume</a>
+  </div>
+  <p>&copy; 2026 Tan Qiutong · Designed &amp; Built with precision.</p>
+</footer>
+
+<!-- ===== Intersection Observer ===== -->
+<script>
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>
+
+<!-- ===== Before/After Slider ===== -->
+<script>
+(function() {
+  const container = document.getElementById('ba1');
+  if (!container) return;
+  const beforeLayer = container.querySelector('.ba-before');
+  const line = container.querySelector('.ba-line');
+  const handle = container.querySelector('.ba-handle');
+  let isDragging = false;
+
+  function setPosition(clientX) {
+    const rect = container.getBoundingClientRect();
+    let x = clientX - rect.left;
+    x = Math.max(0, Math.min(x, rect.width));
+    const percent = (x / rect.width) * 100;
+    beforeLayer.style.width = percent + '%';
+    line.style.left = percent + '%';
+    handle.style.left = percent + '%';
+  }
+
+  function onStart(e) { isDragging = true; container.style.cursor = 'ew-resize'; e.preventDefault(); }
+  function onMove(e) { if (!isDragging) return; const clientX = e.touches ? e.touches[0].clientX : e.clientX; setPosition(clientX); e.preventDefault(); }
+  function onEnd() { isDragging = false; container.style.cursor = 'ew-resize'; }
+
+  container.addEventListener('mousedown', onStart);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseup', onEnd);
+  container.addEventListener('touchstart', onStart, { passive: false });
+  window.addEventListener('touchmove', onMove, { passive: false });
+  window.addEventListener('touchend', onEnd);
+
+  beforeLayer.style.width = '50%';
+  line.style.left = '50%';
+  handle.style.left = '50%';
+})();
+</script>
+
+</body>
+</html>
